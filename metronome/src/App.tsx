@@ -13,7 +13,7 @@ function App() {
 
   const audioContext = new AudioContext()
   const gainNode = audioContext.createGain();
-  gainNode.gain.value = .004
+  gainNode.gain.value = .009
   gainNode.connect(audioContext.destination)
 
   function nextNote() {
@@ -50,9 +50,10 @@ function App() {
 
   useEffect(() => {
     if (clickOn){
-    scheduler()
+    const interval = setInterval(scheduler, 100)
+    return () => clearInterval(interval);
     }
-  })
+  }, [clickOn])
  
 
   return (
