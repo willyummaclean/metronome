@@ -1,10 +1,10 @@
-import type { ReactElement } from 'react';
-import type { FC } from 'react';
+import type { ReactElement } from "react"
+import type { FC } from "react"
 
 interface ModalProps {
-  open: boolean;
-  onClose: () => void;
-  children: ReactElement;
+  open: boolean
+  onClose: () => void
+  children: ReactElement
 }
 
 export default function Modal(props: ModalProps): ReturnType<FC> {
@@ -14,7 +14,7 @@ export default function Modal(props: ModalProps): ReturnType<FC> {
     >
       <div className="modal-main">
         <div className="modal-head">
-          <h1 className='modal-text'>Please Select a BPM between 40 and 200</h1>
+          <h1 className="modal-text">Please Select a BPM between 40 and 200</h1>
         </div>
         <div className="modal-body">{props.children}</div>
         <div className="btn-container">
@@ -24,5 +24,5 @@ export default function Modal(props: ModalProps): ReturnType<FC> {
         </div>
       </div>
     </div>
-  );
+  )
 }
