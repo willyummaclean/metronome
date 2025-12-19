@@ -1,73 +1,57 @@
-# React + TypeScript + Vite
+To run this project use the following commands:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+npm install 
+npm run dev 
 
-Currently, two official plugins are available:
+Then visit:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ http://localhost:5173/
 
-## React Compiler
+You can then select the desired BPM, time signature and hit start to run the metronome. 
+Changing BPM or time signature will stop the metronome.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+My process for this project involved reviewing documentation and articles to become 
+familiarized with the Web Audio API, develop a strategy to manage time keeping, 
+and learn how to use the setInterval and clearInterval functions. 
 
-## Expanding the ESLint configuration
+Here I review the steps I took to achieve the current results:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Created React app with Vite
+2. Added basic buttons needed to complete requirements
+3. Researched Web Audio API and found resources
+4. Played with setting up oscillators
+5. Reviewed Web Audio API book, and followed link to an article
+6. Adapted more complicated functions described in article
+7. Debugged to discover why only one click was triggered
+8. Researched re-triggering useEffect found SetInterval example
+9. Fixed extra beat issue and assured first beat will always be a downbeat
+10. Added additional time signature buttons and functionality to prevent user from going outside of tempo window and show modal
+11. Implemented a handler function to stop the metronome if the user changed BPM or time signature
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Resources:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Basic Web Audio API Tutorial:
+https://www.youtube.com/watch?v=vzdonYZYCOA
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Searching how to make a sound with Web Audio API:
+https://dev.to/rayalva407/creating-an-oscillator-with-the-web-audio-api-5b8m
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Making an Oscillator with the Web Audio API:
+https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Triggering Sounds:
+https://webaudioapi.com/book/Web_Audio_API_Boris_Smus_html/ch02.html
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Article with an Approach to Audio Scheduling using the Web Audio API:
+https://web.dev/articles/audio-scheduling
+
+SetInterval Examples:
+https://devtrium.com/posts/set-interval-react
+https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval
+
+ClearInterval Examples:
+https://developer.mozilla.org/en-US/docs/Web/API/Window/clearInterval
+https://stackoverflow.com/questions/72592921/how-stop-setinterval-automatically-in-react-hooks
+
+TSX Modal Example:
+https://stackademic.com/blog/how-to-implement-a-reusable-modal-component-in-react-and-typescript
